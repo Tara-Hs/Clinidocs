@@ -1,7 +1,4 @@
-<p>
-    Patient's name: <%= patient['name'] %>
-    <%= patient['surname']%>
-</p>
+
 
 <div class="sidebar">
             
@@ -27,6 +24,18 @@
 
 
 
+<p>
+    Patient's name: <%= patient['name'] %>
+    <%= patient['surname']%>
+</p>
+
+<% if logged_in? %>
+    <form action="/patients/<%= patient['id']%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>Remove</button>
+    </form>
+<% end %>
+<a href="/patients/<%= patient['id'] %>/update">Update Details</a>
 
 
 

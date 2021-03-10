@@ -134,12 +134,18 @@ post '/patient_details' do
     params[:height],
     params[:weight],
     params[:blood_type],
-    # current_doctor()['id']
   ])
 
   redirect '/'
 end
 
-get '/delete' do
-  "Hello World"
+
+delete '/patients/:id' do
+  
+  
+  patient = run_sql("DELETE FROM patients WHERE id = $1;", [params[:id]])
+
+  
+  redirect('/')
 end
+
