@@ -1,8 +1,13 @@
 #  dependences
 require 'sinatra'
-require 'sinatra/reloader'
 require 'pg'
 require 'bcrypt'
+if development?
+  require 'sinatra/reloader' 
+  require 'pry'
+
+end
+
 
 enable :sessions
 
@@ -27,7 +32,7 @@ def current_doctor
 end
 
 def run_sql(sql, arr = [])
-    db = PG.connect(dbname: 'clinidocs')
+    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
     results = db.exec_params(sql, arr)
     db.close
     return results
