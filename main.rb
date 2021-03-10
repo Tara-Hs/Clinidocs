@@ -39,7 +39,7 @@ end
 get '/' do
   redirect '/login' unless logged_in?
 
- patients = run_sql('SELECT * FROM patients;')
+  patients = run_sql('SELECT * FROM patients;')
   erb :index, locals: {patients:patients}
 end
 
