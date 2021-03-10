@@ -1,17 +1,17 @@
-
 <p>
-    <%= patient['name'] %>
+    Patient's name: <%= patient['name'] %>
+    <%= patient['surname']%>
 </p>
 
 <div class="sidebar">
             
     Patient ID:  <%= patient['id'] %>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
-    <a href="#">Medication History</a><br>
-    <a href="#">Medical History</a><br>
-    <a href="#">Correspondence</a><br>
-    <a href="#">Results</a><br>
-    <a href="#">Case Notes</a><br>
+    <a href="/treatment_notes">Patient's History</a><br>
+    <a href="/update">Treatment Notes</a><br>
+    <a href="/new_pt">New Patient</a><br>
+    <a href="/delete">Remove Patient</a><br>
+    <a href="/">Case Notes</a><br>
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
 

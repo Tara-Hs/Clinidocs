@@ -78,8 +78,6 @@ end
 
 post '/sessions' do
 
-    
-    
     db = PG.connect(dbname: 'clinidocs')
     sql = "SELECT * FROM doctors WHERE email = '#{params[:email]}';"
     results = db.exec(sql) 
@@ -103,3 +101,45 @@ delete '/sessions' do
 end
 
 
+
+get '/treatment_notes/:id' do
+ 
+  treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+  erb :treatment_notes, locals: { treatment_note: treatment_note }
+end
+
+
+get '/treatment_notes' do
+  erb :treatment_notes
+end
+
+get '/update' do
+  "Hello World"
+end
+
+get '/new_pt' do
+  erb :new_pt
+end
+
+post '/patient_details' do
+
+  sql = "insert into patients (name, surname, contact_details, address, medicare_number, date_of_birth, height, weight, blood_type) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+  run_sql(sql, [
+    params[:name], 
+    params[:surname],
+    params[:contact_details], 
+    params[:address],
+    params[:medicare_number],
+    params[:date_of_birth],
+    params[:height],
+    params[:weight],
+    params[:blood_type],
+    # current_doctor()['id']
+  ])
+
+  redirect '/'
+end
+
+get '/delete' do
+  "Hello World"
+end
