@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+    <% if logged_in? %>
+
+        logged in as <%= current_doctor()['email'] %>
+
+        <form action="/sessions" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>logout</button>
+        </form>
+        
+    <% else %>
+        <a href="/login">login</a>
+    <% end %>
+
+
+    <div class="sidebar">
+        Patient ID:  <%= patient['id'] %>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+        <a href="#">Medication History</a><br>
+        <a href="#">Medical History</a><br>
+        <a href="#">Correspondence</a><br>
+        <a href="#">Results</a><br>
+        <a href="#">Case Notes</a><br>
+    </div>
+    <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+
+    <script>
+        function openNav() {
+            document.querySelector('.sidebar').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.querySelector('.sidebar').style.width = "0";
+        }
+    </script>
+
+    <%= yield %>
+   
+</body>
+</html>

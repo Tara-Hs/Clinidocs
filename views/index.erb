@@ -1,0 +1,31 @@
+<h2>Welcome to Clinidocs</h2>
+
+<div>
+    <div>
+    
+        <div>
+
+            <label for="patient-search">Search</label>
+            <input type="search" id="patient-search" aria-label="search data">
+            <button>Search</button>
+        
+        
+        
+        </div>
+        <% patients.each do |patient| %>
+
+            <a href="/patients/<%= patient['id'] %>">
+                <p>
+                    <%= patient['name'] %>
+                </p>
+            </a>
+            
+
+        <% end %>
+       
+
+
+
+    </div>
+
+</div>
