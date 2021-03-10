@@ -8,21 +8,38 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
-    <% if logged_in? %>
-
-        logged in as <%= current_doctor()['email'] %>
-
-        <form action="/sessions" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button>logout</button>
-        </form>
-        
-    <% else %>
-        <a href="/login">login</a>
-    <% end %>
-
+    <div class="main">
     
-    <%= yield %>
+    
+    
+        <div class="logout">
+            <div class="logout_child">
+            
+                <% if logged_in? %>
+
+                    logged in as <%= current_doctor()['email'] %>
+
+                    <form action="/sessions" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button>logout</button>
+                    </form>
+                    
+                <% else %>
+                    <a href="/login">login</a>
+                <% end %>
+            
+            </div>
+        
+        
+        </div>
+
+        
+        <%= yield %>
+    
+        <script src="/javascripts/app.js"></script>
+    </div>
+
    
 </body>
 </html>
+

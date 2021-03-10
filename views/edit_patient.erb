@@ -1,0 +1,25 @@
+<h1>Please update patient details</h1>
+
+
+<form action="/patient/<%= patient['id'] %>" method="post">
+<input type="hidden" name="_method" value="patch">
+  <label for="">Name: </label>
+  <input type="text" name="name"><br>
+  <label for="">Surname: </label>
+  <input type="text" name="surname"><br>
+  <label for="">Contact Details: </label>
+  <input type="text" name="contact_details"><br> 
+  <label for="">Address: </label>
+  <input type="text" name="address"><br>
+  <label for="">Medicare Number: </label>
+  <input type="text" name="medicare_number"><br>
+  <label for="">Date of Birth: </label>
+  <input type="text" name="date_of_birth"><br>
+  <label for="">Height: </label>
+  <input type="text" name="height"><br>
+  <label for="">Weight: </label>
+  <input type="text" name="weight"><br>
+  <label for="">Blood Type: </label>
+  <input type="text" name="blood_type"><br>
+  <button>Update</button>
+</form>

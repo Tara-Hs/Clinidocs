@@ -5,37 +5,46 @@
     Patient ID:  <%= patient['id'] %>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
     <a href="/treatment_notes">Patient's History</a><br>
-    <a href="/update">Treatment Notes</a><br>
+    <a href="/case_notes">Treatment Notes</a><br>
     <a href="/new_pt">New Patient</a><br>
-    <a href="/delete">Remove Patient</a><br>
-    <a href="/">Case Notes</a><br>
+    <a href="/edit_patient">Update Patient</a><br>
+    <a href="/clients">Clients</a><br>
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
 
-<script>
-    function openNav() {
-        document.querySelector('.sidebar').style.width = "250px";
-    }
-
-    function closeNav() {
-        document.querySelector('.sidebar').style.width = "0";
-    }
-</script>
 
 
+<div>
+    <div>
 
-<p>
-    Patient's name: <%= patient['name'] %>
-    <%= patient['surname']%>
-</p>
+        <p class="info">
+            Patient's Details: <br><br>
+            Name: <a class="details"><%= patient['name'] %></a> <br><br>
+            Surname: <a class="details"><%= patient['surname']%></a> <br><br>
+            Contact Details: <a class="details"><%= patient['contact_details'] %></a><br><br>
+            Address: <a class="details"><%= patient['address'] %></a><br><br>
+            Medicare Number: <a class="details"><%= patient['medicare_number'] %></a><br><br>
+            Date of Birth: <a class="details"><%= patient['date_of_birth'] %></a><br><br>
+            Height: <a class="details"><%= patient['height'] %></a><br><br>
+            Weight: <a class="details"><%= patient['weight'] %></a><br><br>
+            Blood Type: <a class="details"><%= patient['blood_type'] %></a><br><br>
+            
+        </p>
+        
+    </div>
+</div>
 
 <% if logged_in? %>
+    
     <form action="/patients/<%= patient['id']%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>Remove</button>
     </form>
+
 <% end %>
-<a href="/patients/<%= patient['id'] %>/update">Update Details</a>
+
+
+
 
 
 

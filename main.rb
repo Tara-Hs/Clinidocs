@@ -2,6 +2,7 @@
 require 'sinatra'
 require 'pg'
 require 'bcrypt'
+
 if development?
   require 'sinatra/reloader' 
   require 'pry'
@@ -47,6 +48,13 @@ get '/' do
   patients = run_sql('SELECT * FROM patients;')
   erb :index, locals: {patients:patients}
 end
+
+# get '/' do
+#   redirect '/login' unless logged_in?
+
+#   treatment_notes = run_sql('SELECT * FROM treatment_notes;')
+#   erb :index, locals: {treatment_notes:treatment_notes}
+# end
 
 get '/login' do
   erb :login
@@ -107,20 +115,17 @@ end
 
 
 
-get '/treatment_notes/:id' do
+# get '/treatment_notes/:id' do
  
-  treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
-  erb :treatment_notes, locals: { treatment_note: treatment_note }
-end
+#   treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+#   erb :treatment_notes, locals: { treatment_note: treatment_note }
+# end
 
 
-get '/treatment_notes' do
-  erb :treatment_notes
-end
+# get '/treatment_notes' do
+#   erb :treatment_notes
+# end
 
-get '/update' do
-  "Hello World"
-end
 
 get '/new_pt' do
   erb :new_pt
@@ -148,9 +153,62 @@ end
 delete '/patients/:id' do
   
   
-  patient = run_sql("DELETE FROM patients WHERE id = $1;", [params[:id]])
+  patient = run_sql("DELETE FROM patients WHERE id = $1;", [params[:id]])[0]
 
   
   redirect('/')
 end
 
+
+get '/edit_patient' do
+  erb :edit_patient
+end
+
+get '/patients/:id/edit' do
+  dish = run_sql("select * from patients where id = $1;", [params[:id]])
+  erb :edit_patient, locals: { patient: patient }
+end
+
+
+patch '/patients/:id/edit' do
+  sql = "update patients set name = $1, surname = $2, contact_details = $3, address = $4, medicare_number = $5, date_of_birth = $6, height = $7, weight = $8, blood_type = $9 where id = $10;", 
+  run_sql(sql, [
+    params[:name], 
+    params[:surname],
+    params[:contact_details], 
+    params[:address],
+    params[:medicare_number],
+    params[:date_of_birth],
+    params[:height],
+    params[:weight],
+    params[:blood_type],
+    params[:id]
+  ])
+
+  redirect '/'
+end
+
+patch '/patient/:id' do
+ 
+  erb :edit_patient
+
+end
+
+# get '/treatment_notes/:id' do
+ 
+#   treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+#   erb :treatment_notes, locals: { treatment_note: treatment_note }
+# end
+
+
+get '/case_notes' do
+  erb :notes
+end
+
+get '/clients' do
+  erb :clients
+end
+
+post '/notes' do
+  erb :notes
+end
