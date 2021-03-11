@@ -67,7 +67,8 @@ a {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-    .input {width: 100px;}
+    .input {width: 30px;}
+    .rightside {display: none;}
 }
 
 
@@ -98,7 +99,7 @@ padding: 15px;
 }
 
 .info {
-    padding-top: 5%;
+    padding-top: 10%;
     color: black;
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
@@ -107,11 +108,10 @@ padding: 15px;
     color: darkgoldenrod;
 }
 .input {
-    padding-left: 0;
+    padding-left: 15px;
     margin-left: 10px;
     position: absolute;
     right: 30%;
-
 }
 
 .grid {
@@ -122,5 +122,4 @@ padding: 15px;
 
 .leftside {
     position: relative;
-
 }
