@@ -68,6 +68,8 @@ a {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
     table {width: 30%;}
+    .input {position: absolute;
+    right: 0;}
 }
 
 
