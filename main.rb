@@ -49,12 +49,12 @@ get '/' do
   erb :index, locals: {patients:patients}
 end
 
-# get '/' do
-#   redirect '/login' unless logged_in?
+get '/treatment_notes' do
+  redirect '/login' unless logged_in?
 
-#   treatment_notes = run_sql('SELECT * FROM treatment_notes;')
-#   erb :index, locals: {treatment_notes:treatment_notes}
-# end
+  treatment_notes = run_sql('SELECT * FROM treatment_notes;')
+  erb :treatment_notes, locals: {treatment_notes:treatment_notes}
+end
 
 get '/login' do
   erb :login
@@ -115,16 +115,13 @@ end
 
 
 
-# get '/treatment_notes/:id' do
+get '/treatment_notes/:id' do
  
-#   treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
-#   erb :treatment_notes, locals: { treatment_note: treatment_note }
-# end
+  treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+  erb :treatment_note, locals: { treatment_note: treatment_note }
+end
 
 
-# get '/treatment_notes' do
-#   erb :treatment_notes
-# end
 
 
 get '/new_pt' do
@@ -160,55 +157,82 @@ delete '/patients/:id' do
 end
 
 
-get '/edit_patient' do
-  erb :edit_patient
-end
 
-get '/patients/:id/edit' do
-  dish = run_sql("select * from patients where id = $1;", [params[:id]])
+get '/edit_patient/:id' do
+  patient = run_sql("select * from patients where id = $1;", [params[:id]])[0]
   erb :edit_patient, locals: { patient: patient }
 end
 
 
-patch '/patients/:id/edit' do
-  sql = "update patients set name = $1, surname = $2, contact_details = $3, address = $4, medicare_number = $5, date_of_birth = $6, height = $7, weight = $8, blood_type = $9 where id = $10;", 
+# patch '/patients/:id' do
+#   sql = "update patients set name = $1, surname = $2, contact_details = $3, address = $4, medicare_number = $5, date_of_birth = $6, height = $7, weight = $8, blood_type = $9 where id = $10;", 
+  
+#   run_sql(sql, [
+#     params[:name], 
+#     params[:surname],
+#     params[:contact_details], 
+#     params[:address],
+#     params[:medicare_number],
+#     params[:date_of_birth],
+#     params[:height],
+#     params[:weight],
+#     params[:blood_type],
+#     params[:id]
+#   ])
+
+#   redirect "/patients/#{params[:id]}"
+# end
+
+patch '/patients/:id' do
+ 
+  run_sql(
+    "update patients set name = $1, surname = $2, address = $3, date_of_birth = $4, contact_details = $5, medicare_number = $6, height = $7, weight = $8, blood_type = $9 where id = $10;", 
+    [params[:name], params[:surname],params[:address],params[:date_of_birth],params[:contact_details], params[:medicare_number], params[:height], params[:weight], params[:blood_type], params[:id]]
+  )
+
+  redirect "/patients/#{params[:id]}"
+
+end
+
+get '/treatment_notes/:id' do
+ 
+  treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+  erb :treatment_notes, locals: { treatment_note: treatment_note }
+end
+
+
+get '/notes' do
+  erb :notes
+end
+
+
+get '/new_tn' do
+  patient_id = params['patient_id']
+  erb :new_tn, locals: { patient_id: patient_id }
+end
+
+
+post '/treatment_notes' do
+
+  sql = "insert into treatment_notes (patient_id, medication_history, medical_history, images, results) values ($1, $2, $3, $4, $5)"
   run_sql(sql, [
-    params[:name], 
-    params[:surname],
-    params[:contact_details], 
-    params[:address],
-    params[:medicare_number],
-    params[:date_of_birth],
-    params[:height],
-    params[:weight],
-    params[:blood_type],
-    params[:id]
+    params[:patient_id], 
+    params[:medication_history],
+    params[:medical_history], 
+    params[:images],
+    params[:results],
   ])
 
   redirect '/'
 end
 
-patch '/patient/:id' do
- 
-  erb :edit_patient
-
+get '/treatment_note' do
+  treatment_note = run_sql("SELECT * FROM treatment_notes;")
+  erb :treatment_note, locals: { treatment_note: treatment_note }
 end
 
-# get '/treatment_notes/:id' do
- 
-#   treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
-#   erb :treatment_notes, locals: { treatment_note: treatment_note }
-# end
-
-
-get '/case_notes' do
-  erb :notes
+get '/search' do
+  patients = run_sql("name LIKE ?", "%" + params[:q] + "%")
+  erb :search, locals: { patients:patients }
 end
 
-get '/clients' do
-  erb :clients
-end
-
-post '/notes' do
-  erb :notes
-end

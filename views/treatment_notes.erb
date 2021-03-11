@@ -1,17 +1,27 @@
+<div class="sidebar">
+  
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+  <a href="/">Home</a><br>
+  <a href="/treatment_note">Patient's History</a><br>
+  <a href="/new_pt">New Patient</a><br>
+  <a href="/new_tn">Treatment Notes</a><br>
+ 
+</div>
+<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
 
-<h3>Medication History</h3>
+<h3>treatment_notes</h3>
 
-<%= treatment_note['medication_history'] %>
+<% treatment_notes.each do |treatment_note| %>
 
-<h3>Medical History</h3>
+    <a href="/treatment_notes/<%= treatment_note['id'] %>">
+        <p>
+            <%= treatment_note['patient_id'] %>
+            <%= treatment_note['medication_history'] %>
+            <%= treatment_note['medical_history']%>
+            <%= treatment_note['images']%>
+            <%= treatment_note['results']%>
+        </p>
+    </a>
+    
 
-<%= treatment_note['medical_history'] %>
-
-<h3>correspondence</h3>
-
-<%= treatment_note['correspondence'] %>
-
-<h3>Results</h3>
-
-<%= treatment_note['results'] %>
-
+<% end %>

@@ -1,14 +1,25 @@
-<h2 class="invisible">Welcome to Clinidocs</h2>
+<div class="sidebar">
+  
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+  <a href="/">Home</a><br>
+  <a href="/new_pt">New Patient</a><br>
+  <a href="#">Accounts</a><br>
+  <a href="#">Personal Notes</a><br>
+  <a href="#">Help</a><br>
+</div>
+<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+<h2>Welcome to Clinidocs</h2>
+<h3>Please choose the patient to access the Dashboard</h3>
 
 <div>
     <div>
     
         <div>
-
-            <label for="patient-search">Search</label>
-            <input type="search" id="patient-search" aria-label="search data">
-            <button>Search</button>
-        
+            <form class="searchbar" action="/search">
+                <label for="">Please Enter the patient's Name: </label>
+                <input type="text" placeholder="Search" aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
         
         
         </div>

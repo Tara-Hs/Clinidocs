@@ -1,0 +1,12 @@
+<h3>Search Results</h3>
+
+<% patients.each do |patient| %>
+
+    <a href="/patients/<%= patient['id'] %>">
+        <p>
+            <%= patient['name'] %>
+            <%= patient['surname']%>
+        </p>
+    </a>
+
+<% end%>

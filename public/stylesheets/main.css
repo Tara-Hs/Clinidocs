@@ -60,7 +60,7 @@ a {
 }
   
 .main {
-    transition: margin-left .5s;
+    transition: margin-left 1s;
     padding: 16px;
 }
 
@@ -83,13 +83,13 @@ a {
 }
 
 table, td, th {  
-    border: 1px solid #ddd;
+    border: 1px solid rgb(182, 176, 176);
     text-align: left;
 }
   
 table {
 border-collapse: collapse;
-width: 100%;
+width: 50%;
 }
 
 th, td {
@@ -97,7 +97,7 @@ padding: 15px;
 }
 
 .info {
-    padding-top: 10%;
+    padding-top: 5%;
     color: black;
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
@@ -105,4 +105,20 @@ padding: 15px;
 .details {
     color: darkgoldenrod;
 }
+.input {
+    padding-left: 15px;
+    margin-left: 10px;
+    position: absolute;
+    right: 5%;
+}
 
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.leftside {
+    position: relative;
+
+}

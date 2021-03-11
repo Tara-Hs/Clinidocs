@@ -1,0 +1,30 @@
+<div class="sidebar">
+  
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+  <a href="/">Home</a><br>
+  <a href="/treatment_note">Patient's History</a><br>
+  <a href="/new_pt">New Patient</a><br>
+  <a href="/new_tn">Treatment Notes</a><br>
+</div>
+<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+<br><br>
+<div class="grid">
+    <div class="leftside">
+
+        <h3>Please Add your Treatment notes below</h3><br><br>
+
+        <form action="/treatment_notes" method="post">
+            <input class="input" type="hidden" name="patient_id" value="<%= patient_id %>"><br><br>
+            <label for="">Medication History: </label>
+            <input class="input" type="text" name="medication_history"><br><br>
+            <label for="">Medical History: </label>
+            <input class="input" type="text" name="medical_history"><br><br>
+            <label for="">Correspondence: </label>
+            <input class="input" type="text" name="correspondence"><br><br>
+            <label for="">Results: </label>
+            <input class="input" type="text" name="results"><br><br>
+            <button>Add</button>
+        </form>
+    </div>
+    <div></div>
+</div>

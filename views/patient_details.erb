@@ -1,21 +1,19 @@
-
-
 <div class="sidebar">
             
-    Patient ID:  <%= patient['id'] %>
+    Patient Name:  <%= patient['name'] %> <%= patient['surname'] %>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
-    <a href="/treatment_notes">Patient's History</a><br>
-    <a href="/case_notes">Treatment Notes</a><br>
+    <a href="/">Home</a><br>
+    <a href="/treatment_note">Patient's History</a><br>
     <a href="/new_pt">New Patient</a><br>
-    <a href="/edit_patient">Update Patient</a><br>
-    <a href="/clients">Clients</a><br>
+    <a href="/new_tn">Treatment Notes</a><br>
+  
 </div>
-<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span><br><br>
 
+<h3>Use Dashboard to apply any changes</h3>
 
-
-<div>
-    <div>
+<div class="grid">
+    <div class="left">
 
         <p class="info">
             Patient's Details: <br><br>
@@ -30,8 +28,11 @@
             Blood Type: <a class="details"><%= patient['blood_type'] %></a><br><br>
             
         </p>
-        
+
     </div>
+    <div>
+      
+    </div> 
 </div>
 
 <% if logged_in? %>
@@ -41,6 +42,39 @@
         <button>Remove</button>
     </form>
 
+    <div class="grid">
+        <div class="leftside">
+    
+            <h3>Please update patient details</h3>
+
+
+            <form action="/patients/<%= patient['id'] %>" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <label for="">Name: </label>
+                <input class="input" type="text" name="name" value="<%= patient['name'] %>"><br><br>
+                <label for="">Surname: </label>
+                <input class="input" type="text" name="surname" value="<%= patient['surname'] %>"><br><br>
+                <label for="">Contact Details: </label>
+                <input class="input" type="text" name="contact_details" value="<%= patient['contact_details'] %>"><br><br> 
+                <label for="">Address: </label>
+                <input class="input" type="text" name="address" value="<%= patient['address'] %>"><br><br>
+                <label for="">Medicare Number: </label>
+                <input class="input" type="text" name="medicare_number" value="<%= patient['medicare_number'] %>"><br><br>
+                <label for="">Date of Birth: </label>
+                <input class="input" type="text" name="date_of_birth" value="<%= patient['date_of_birth'] %>"><br><br>
+                <label for="">Height: </label>
+                <input class="input" type="text" name="height" value="<%= patient['height'] %>"><br><br>
+                <label for="">Weight: </label>
+                <input class="input" type="text" name="weight" value="<%= patient['weight'] %>"><br><br>
+                <label for="">Blood Type: </label>
+                <input class="input" type="text" name="blood_type" value="<%= patient['blood_type'] %>"><br><br>
+                <button>Update</button>
+            </form>
+        </div>
+        <div>
+            <a href="/new_tn?patient_id=<%= patient['id'] %>">Add Treatment</a>
+        </div>
+    </div>
 <% end %>
 
 

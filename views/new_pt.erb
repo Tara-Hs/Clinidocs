@@ -1,22 +1,92 @@
-<form action="/patient_details" method="post">
-  <label for="">Name: </label>
-  <input type="text" name="name"><br>
-  <label for="">Surname: </label>
-  <input type="text" name="surname"><br>
-  <label for="">Contact Details: </label>
-  <input type="text" name="contact_details"><br> 
-  <label for="">Address: </label>
-  <input type="text" name="address"><br>
-  <label for="">Medicare Number: </label>
-  <input type="text" name="medicare_number"><br>
-  <label for="">Date of Birth: </label>
-  <input type="text" name="date_of_birth"><br>
-  <label for="">Height: </label>
-  <input type="text" name="height"><br>
-  <label for="">Weight: </label>
-  <input type="text" name="weight"><br>
-  <label for="">Blood Type: </label>
-  <input type="text" name="blood_type"><br>
-  <button>Add</button>
-</form>
+<div class="sidebar">
+  
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+  <a href="/">Home</a><br>
+  <a href="/treatment_note">Patient's History</a><br>
+  <a href="/new_pt">New Patient</a><br>
+  <a href="/new_tn">Treatment Notes</a><br>
 
+</div>
+<span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+<div class="grid">
+  <div class="leftside">
+
+    <h2>Please add new patient's details below</h2>
+    <br><br>
+    <form action="/patient_details" method="post">
+      <label for="">Name: </label>
+      <input class="input" type="text" name="name"><br><br>
+      <label for="">Surname: </label>
+      <input class="input" type="text" name="surname"><br><br>
+      <label for="">Contact Details: </label>
+      <input class="input" type="text" name="contact_details"><br><br>
+      <label for="">Address: </label>
+      <input class="input" type="text" name="address"><br><br>
+      <label for="">Medicare Number: </label>
+      <input class="input" type="text" name="medicare_number"><br><br>
+      <label for="">Date of Birth: </label>
+      <input class="input" type="text" name="date_of_birth"><br><br>
+      <label for="">Height: </label>
+      <input class="input" type="text" name="height"><br><br>
+      <label for="">Weight: </label>
+      <input class="input" type="text" name="weight"><br><br>
+      <label for="">Blood Type: </label>
+      <input class="input" type="text" name="blood_type"><br><br>
+      <button>Add</button>
+    </form>
+  </div>
+  <div>
+    <h3>Clients Table</h3>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Robinson</td>
+        </tr>
+            <td>Shahram</td>
+            <td>Soali</td>
+        <tr>
+        </tr>
+        <tr>
+            <td>Ali</td>
+            <td>Sadr</td>
+        </tr>
+        <tr>
+            <td>Roza</td>
+            <td>Brown</td>
+        </tr>
+        <tr>
+            <td>Marry</td>
+            <td>Buckethead</td>
+        </tr>
+        <tr>
+            <td>Casey</td>
+            <td>Fingercup</td>
+        </tr>
+        <tr>
+            <td>Matthew</td>
+            <td>Harraldson</td>
+        </tr>
+        <tr>
+            <td>Jack</td>
+            <td>Johnson</td>
+        </tr>
+        <tr>
+            <td>Sarah</td>
+            <td>Harrison</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>Thomson</td>
+        </tr>
+      
+
+
+    </table>
+  </div>
+
+</div>
