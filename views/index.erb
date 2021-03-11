@@ -8,6 +8,7 @@
   <a href="#">Help</a><br>
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
+<br><br>
 <h2>Welcome to Clinidocs</h2>
 <h3>Please choose the patient to access the Dashboard</h3>
 
@@ -25,7 +26,7 @@
         </div>
         <% patients.each do |patient| %>
 
-            <a href="/patients/<%= patient['id'] %>">
+            <a class="pt" href="/patients/<%= patient['id'] %>">
                 <p>
                     <%= patient['name'] %>
                     <%= patient['surname']%>

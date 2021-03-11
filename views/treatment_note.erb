@@ -2,29 +2,35 @@
   
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
   <a href="/">Home</a><br>
-  <a href="/treatment_note">Patient's History</a><br>
   <a href="/new_pt">New Patient</a><br>
-  <a href="/new_tn">Treatment Notes</a><br>
+  <a href="#">Accounts</a><br>
+  <a href="#">Personal Notes</a><br>
+  <a href="#">Help</a><br>
  
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
-<h3>Patient ID</h3>
+<br><br>
+<h3>Patient ID: </h3>
 
 <%= treatment_note['patient_id'] %>
 
-<h3>Medication History</h3>
+<h3>Medication History: </h3>
 
 <%= treatment_note['medication_history'] %>
 
-<h3>Medical History</h3>
+<h3>Medical History: </h3>
 
 <%= treatment_note['medical_history'] %>
 
-<h3>Correspondence</h3>
+<h3>Correspondence: </h3>
 
-<%= treatment_note['correspondence'] %>
+<img class="image" src="<%= treatment_note['images'] %>" alt="">
 
-<h3>Results</h3>
+<h3>Results: </h3>
 
 <%= treatment_note['results'] %>
 
+<h3>Please update patient details if applicable below</h3>
+
+
+    

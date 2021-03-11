@@ -2,16 +2,17 @@
   
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
   <a href="/">Home</a><br>
-  <a href="/treatment_note">Patient's History</a><br>
   <a href="/new_pt">New Patient</a><br>
-  <a href="/new_tn">Treatment Notes</a><br>
+  <a href="#">Accounts</a><br>
+  <a href="#">Personal Notes</a><br>
+  <a href="#">Help</a><br>
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
 <br><br>
 <div class="grid">
     <div class="leftside">
 
-        <h3>Please Add your Treatment notes below</h3><br><br>
+        <h3>Please Add your Treatment Notes below</h3><br><br>
 
         <form action="/treatment_notes" method="post">
             <input class="input" type="hidden" name="patient_id" value="<%= patient_id %>"><br><br>
@@ -27,6 +28,7 @@
         </form>
     </div>
     <div>
-        <a href="/treatment_notes">Treatment Notes History</a><br>
+        <br><br>
+        <a class="link" href="/treatment_notes?patient_id=">Treatment Notes History</a><br>
     </div>
 </div>

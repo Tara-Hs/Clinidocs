@@ -2,12 +2,14 @@
   
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
   <a href="/">Home</a><br>
-  <a href="/treatment_note">Patient's History</a><br>
   <a href="/new_pt">New Patient</a><br>
+  <a href="#">Accounts</a><br>
+  <a href="#">Personal Notes</a><br>
+  <a href="#">Help</a><br>
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span>
-
-<h1>Please update patient details</h1>
+<br><br>
+<h3>Please update patient details</h3>
 
 
 <form action="/patients/<%= patient['id'] %>" method="post">

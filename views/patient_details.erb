@@ -3,9 +3,10 @@
     Patient Name:  <%= patient['name'] %> <%= patient['surname'] %>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
     <a href="/">Home</a><br>
-    <a href="/treatment_note">Patient's History</a><br>
     <a href="/new_pt">New Patient</a><br>
-    <a href="/new_tn">Treatment Notes</a><br>
+    <a href="#">Accounts</a><br>
+    <a href="#">Personal Notes</a><br>
+    <a href="#">Help</a><br>
   
 </div>
 <span style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776;Dashboard</span><br><br>
@@ -73,7 +74,7 @@
         </div>
         <div>
             
-            <a href="/new_tn?patient_id=<%= patient['id'] %>">Add Treatment</a>
+            <a class="link" href="/new_tn?patient_id=<%= patient['id'] %>">Add Treatment</a>
         </div>
     </div>
 <% end %>

@@ -32,13 +32,7 @@ def current_doctor
     return results[0]
 end
 
-def run_sql(sql, arr = [])
-    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
-    results = db.exec_params(sql, arr)
-    db.close
-    return results
-  
-end
+
 
 
 
@@ -194,11 +188,11 @@ patch '/patients/:id' do
 
 end
 
-get '/treatment_notes/:id' do
+# get '/treatment_notes/:id' do
  
-  treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
-  erb :treatment_notes, locals: { treatment_note: treatment_note }
-end
+#   treatment_note = run_sql("SELECT * FROM treatment_notes WHERE id = $1;", [params[:id]])[0]
+#   erb :treatment_notes, locals: { treatment_note: treatment_note }
+# end
 
 
 get '/notes' do
@@ -209,6 +203,10 @@ end
 get '/new_tn' do
   patient_id = params['patient_id']
   erb :new_tn, locals: { patient_id: patient_id }
+end
+
+get '/treatment_notes' do
+  erb :treatment_note
 end
 
 
@@ -231,8 +229,8 @@ get '/treatment_note' do
   erb :treatment_note, locals: { treatment_note: treatment_note }
 end
 
-get '/search' do
-  patients = run_sql("name LIKE ?", "%" + params[:q] + "%")
-  erb :search, locals: { patients:patients }
-end
+# get '/search' do
+#   patients = run_sql("name LIKE ?", "%" + params[:q] + "%")
+#   erb :search, locals: { patients:patients }
+# end
 
