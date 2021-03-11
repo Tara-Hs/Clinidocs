@@ -67,6 +67,7 @@ a {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+    .input {width: 100px;}
 }
 
 
@@ -106,10 +107,11 @@ padding: 15px;
     color: darkgoldenrod;
 }
 .input {
-    padding-left: 15px;
+    padding-left: 0;
     margin-left: 10px;
     position: absolute;
-    right: 5%;
+    right: 30%;
+
 }
 
 .grid {
