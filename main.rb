@@ -25,7 +25,7 @@ end
 
 
 def current_doctor
-    db = PG.connect(dbname: 'clinidocs')
+    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
     sql = "SELECT * FROM doctors WHERE id = #{session[:doctor_id]};"
   
     results = db.exec(sql)
@@ -91,7 +91,7 @@ end
 
 post '/sessions' do
 
-    db = PG.connect(dbname: 'clinidocs')
+    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
     sql = "SELECT * FROM doctors WHERE email = '#{params[:email]}';"
     results = db.exec(sql) 
 
