@@ -67,8 +67,8 @@ a {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-    .input {width: 30px;}
-    .rightside {display: none;}
+    .input {width: 5px;}
+  
 }
 
 
