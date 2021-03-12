@@ -61,5 +61,5 @@ The flowchart below shows how I approached writing the codes for the app.
 
 ## Licence & copyright
 
-Targol Hosseini, General Assembly 
+ Targol Hosseini, General Assembly 
 

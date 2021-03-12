@@ -25,11 +25,11 @@ end
 
 
 def current_doctor
-    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
-    sql = "SELECT * FROM doctors WHERE id = #{session[:doctor_id]};"
-  
-    results = db.exec(sql)
-    return results[0]
+  db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'clinidocs'})
+  sql = "SELECT * FROM doctors WHERE id = #{session[:doctor_id]};"
+
+  results = db.exec(sql)
+  return results[0]
 end
 
 def run_sql(sql, arr = [])
@@ -49,12 +49,12 @@ get '/' do
   erb :index, locals: {patients:patients}
 end
 
-get '/treatment_notes' do
-  redirect '/login' unless logged_in?
+# get '/treatment_notes' do
+#   redirect '/login' unless logged_in?
 
-  treatment_notes = run_sql('SELECT * FROM treatment_notes;')
-  erb :treatment_notes, locals: {treatment_notes:treatment_notes}
-end
+#   treatment_notes = run_sql('SELECT * FROM treatment_notes;')
+#   erb :treatment_notes, locals: {treatment_notes:treatment_notes}
+# end
 
 get '/login' do
   erb :login
@@ -212,7 +212,9 @@ get '/new_tn' do
 end
 
 get '/treatment_notes' do
-  erb :treatment_note
+  sql = "select * from treatment_notes where patient_id = $1"
+  treatment_notes = run_sql(sql, [params[:patient_id]])
+  erb :treatment_notes, locals: { treatment_notes: treatment_notes }
 end
 
 
