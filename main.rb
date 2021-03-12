@@ -211,6 +211,11 @@ get '/new_tn' do
   erb :new_tn, locals: { patient_id: patient_id }
 end
 
+# get '/new_tn'
+# sql = "select * from treatment_notes where patient = $1"
+# treatment_notes = run_sql(sql, [params[:patient]])
+# erb :treatment_notes, locals: { treatment_notes: treatment_notes}
+
 get '/treatment_notes' do
   sql = "select * from treatment_notes where patient_id = $1"
   treatment_notes = run_sql(sql, [params[:patient_id]])
