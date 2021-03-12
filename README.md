@@ -9,6 +9,9 @@ To start using the app, you should use the link below:
 https://intense-hamlet-22235.herokuapp.com/login
 
 You should login to be able to access the content.
+login: david@clinidocs.co
+pass: ll
+---
 
 On the home page, you can use the dashboard to create new patient records.
 The patients that already have been recorded in the data base, will be shown on your home page. 
