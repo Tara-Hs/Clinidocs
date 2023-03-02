@@ -46,7 +46,7 @@ get '/' do
   redirect '/login' unless logged_in?
 
   patients = run_sql('SELECT * FROM patients;')
-  erb :index, locals: {patients:patients}
+  erb :index, locals: { patients: patients }
 end
 
 # get '/treatment_notes' do
@@ -243,7 +243,6 @@ get '/treatment_note' do
 end
 
 # get '/search' do
-#   patients = run_sql("name LIKE ?", "%" + params[:q] + "%")
-#   erb :search, locals: { patients:patients }
+#   erb :search
 # end
 
